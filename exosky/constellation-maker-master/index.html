@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Welcome To Steller Inside</title>
+		<link rel='shortcut icon' href='images/star.ico'>
+		<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/semantic.min.js"></script>
+		<script type="text/javascript" src="js/html2canvas.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/semantic.min.css">
+		<link rel="stylesheet" type="text/css" href="css/stars.css">
+		<script type="text/javascript" src="js/constellations.js"></script>
+	</head>
+	<body>
+		<main>
+			<div>
+				<div id="stars">
+					<canvas id="canvas"></canvas>
+				</div>
+			</div>
+			<div id="showNav" title="options">
+				<i class="big star icon"></i>
+			</div>
+			<div id="clear" title="Clear the lines">
+				<i class="big remove icon"></i>
+			</div>
+			<div id="reset" title="Generate new stars">
+				<i class="big refresh icon"></i>
+			</div>
+			<div id="save" title="Save the pattern">
+				<i class="big photo icon"></i>
+			</div>
+		<main>
+		<div id="nav" class="ui right sidebar menu">
+			<a class="item">
+		    	<div>Number of Stars: <span id="nbStarsValue"></span></div><br/><input type="range" min="30" max="200" id="nbStars"/>
+		    	<div class="small">All patterns are cleared when removing stars</div>
+		    </a>
+		    <a class="item">
+		    	Sky Colour: <input type="color" value="rgb(5,5,32)" id="skyColour"/>
+		    </a>
+		    <a class="item check">
+		    	<div class="inline field">
+				    <div class="ui checkbox">
+				      <input type="checkbox" id="resize">
+				    </div>
+				  </div>
+			    <div>Resize with Window</div>
+			    <div class="very small">Constellation lines and stars may not line up when resizing is on</div>
+		    </a>
+		</div>
+		<div class="ui small modal" id="start">
+		  <div class="content">
+		    <div class="ui horizontal center aligned segment">
+		    	<h1 class="ui header">Welcome To Steller Inside!</h1>
+		    	<h4 class="ui header">
+		    		Embark on a celestial journey where you can connect the stars to create your own constellations. Give your constellations a name, explore the night sky, and even save an image of your unique creation!
+		    	</h4>
+		    	<br/>
+		    	<div class="ui button blue close">Start</div>
+		    </div>
+		  </div>
+		</div>
+		<div class="ui modal" id="download">
+			<i class="close icon"></i>
+		  <div class="content">
+		    <div class="ui horizontal center aligned segment">
+		    	<img class="ui centered image" id="preview" src="">
+		    	<br/>
+		    	
+				<div class="ui horizontal center aligned segment">
+					<img class="ui centered image" id="preview" src="">
+					<br/>
+					<a class="ui button blue" id="nameConstellationButton" onclick="nameConstellation()">Name the constellation</a>
+					<a class="ui button blue" id="downloadButton" download="constellation.png">Download</a>
+					
+				</div>
+				
+				<script>
+					function nameConstellation() {
+						// Prompt the user for a constellation name
+						const constellationName = prompt("Enter the name of the constellation:");
+						
+						// Check if the user entered a name
+						if (constellationName) {
+							// Set the download button with the new name
+							const downloadButton = document.getElementById("downloadButton");
+							downloadButton.setAttribute("download", `${constellationName}.png`);
+							alert(`You named the constellation: ${constellationName}`);
+						} else {
+							alert("No name entered.");
+						}
+					}
+				</script>
+				
+		    </div>
+		  </div>
+		</div>
+	</body>
+</html>
